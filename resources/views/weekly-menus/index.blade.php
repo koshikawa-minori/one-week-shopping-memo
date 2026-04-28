@@ -7,6 +7,7 @@
     <title>一週間Menu</title>
 </head>
 <body>
+    <h2>日付選択</h2>
     <form method="POST" action="/weekly-menus">
         @csrf
         <div class="days-list">
@@ -15,6 +16,8 @@
             <button type="submit">日付入力</button>
         </div>
     </form>
+
+    <h2>メニュー</h2>
     <form method="POST" action="/daily-menus/update">
         @csrf
         <div class="menu-list">
@@ -28,11 +31,33 @@
                 </div>
             @endforeach
 
-            <button type="submit">献立決定！</button>
+            <button type="submit">決定！</button>
         </div>
     </form>
-    <div class="shopping-list">
 
+    <h2>買い物メモ</h2>
+    <form method="POST" action="/shopping-items/store">
+        @csrf
+        <div class="shopping-list">
+            <div class="shopping-items">
+                <select name="category">
+                        <option class="shopping-category" value="食料品">食料品</option>
+                        <option class="shopping-category" value="日用品">日用品</option>
+                        <option class="shopping-category" value="その他">その他</option>
+                </select>
+                <input class="shopping-item" type="text" name="item_name">
+            </div>
+
+            <button type="submit">追加</button>
+        </div>
+    </form>
+    <div class="shopping-list-display">
+        @foreach ($shoppingItems as $shoppingItem)
+            <div class="shopping-list-row">
+                <span>{{ $shoppingItem->category }}</span>
+                <span>{{ $shoppingItem->item_name}}</span>
+            </div>
+        @endforeach
     </div>
 </body>
 </html>

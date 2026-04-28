@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\WeeklyMenu;
 use App\Models\DailyMenu;
+use App\Models\ShoppingItem;
 use Carbon\Carbon;
 
 class WeeklyMenuController extends Controller
@@ -16,6 +17,7 @@ class WeeklyMenuController extends Controller
         if (!$weeklyMenu) {
             return view('weekly-menus.index', [
                 'dailyMenus' => collect(),
+                'shoppingItems' => collect(),
             ]);
         }
 
@@ -23,7 +25,11 @@ class WeeklyMenuController extends Controller
             ->orderBy('date')
             ->get();
 
-        return view('weekly-menus.index', compact('dailyMenus'));
+        $shoppingItems = ShoppingItem::where('weekly_menu_id', $weeklyMenu->id)
+        ->orderBy('item_name')
+            ->get();
+
+        return view('weekly-menus.index', compact('dailyMenus', 'shoppingItems'));
     }
 
     public function create()
@@ -54,6 +60,23 @@ class WeeklyMenuController extends Controller
         return redirect()->route('weekly-menus.index');
     }
 
+    public function storeItem(Request $request)
+    {
+
+        $weeklyMenu = WeeklyMenu::orderBy('created_at', 'desc')->first();
+
+        $itemName = $request->item_name;
+        $category = $request->category;
+
+        ShoppingItem::create([
+            'weekly_menu_id' => $weeklyMenu->id,
+            'item_name' => $itemName,
+            'category' => $category,
+        ]);
+
+        return redirect()->route('weekly-menus.index');
+    }
+
     public function edit($id)
     {
 
@@ -72,4 +95,5 @@ class WeeklyMenuController extends Controller
 
         return redirect()->route('weekly-menus.index');
     }
+
 }
