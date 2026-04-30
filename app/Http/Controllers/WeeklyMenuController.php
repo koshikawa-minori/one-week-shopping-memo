@@ -18,6 +18,9 @@ class WeeklyMenuController extends Controller
             return view('weekly-menus.index', [
                 'dailyMenus' => collect(),
                 'shoppingItems' => collect(),
+                'foodItems' => collect(),
+                'dailyItems' => collect(),
+                'otherItems' => collect(),
             ]);
         }
 
@@ -29,7 +32,11 @@ class WeeklyMenuController extends Controller
         ->orderBy('item_name')
             ->get();
 
-        return view('weekly-menus.index', compact('dailyMenus', 'shoppingItems'));
+        $foodItems = $shoppingItems->where('category', '食料品');
+        $dailyItems  = $shoppingItems->where('category', '日用品');
+        $otherItems  = $shoppingItems->where('category', 'その他');
+
+        return view('weekly-menus.index', compact('dailyMenus', 'shoppingItems', 'foodItems', 'dailyItems', 'otherItems'));
     }
 
     public function create()

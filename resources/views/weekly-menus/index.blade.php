@@ -52,10 +52,24 @@
         </div>
     </form>
     <div class="shopping-list-display">
-        @foreach ($shoppingItems as $shoppingItem)
+        <h3>【食料品】</h3>
+        @foreach ($foodItems as $item)
             <div class="shopping-list-row">
-                <span>{{ $shoppingItem->category }}</span>
-                <span>{{ $shoppingItem->item_name}}</span>
+                <span>{{ $item->item_name }}</span>
+            </div>
+        @endforeach
+
+        <h3>【日用品】</h3>
+        @foreach ($dailyItems as $item)
+            <div class="shopping-list-row">
+                <span>{{ $item->item_name }}</span>
+            </div>
+        @endforeach
+
+        <h3>【その他】</h3>
+        @foreach ($otherItems as $item)
+            <div class="shopping-list-row">
+                <span>{{ $item->item_name }}</span>
             </div>
         @endforeach
     </div>
