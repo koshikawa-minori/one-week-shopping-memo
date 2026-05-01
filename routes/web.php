@@ -12,3 +12,6 @@ Route::post('/daily-menus/update',[WeeklyMenuController::class, 'updateMenus']);
 
 // 買い物メモ
 Route::post('/shopping-items/store',[WeeklyMenuController::class, 'storeItem']);
+
+// チェックボックス
+Route::post('/shopping-items/{shoppingItem}/toggle', [WeeklyMenuController::class, 'toggleItem']);

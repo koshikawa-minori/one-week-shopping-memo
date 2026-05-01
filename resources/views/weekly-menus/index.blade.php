@@ -55,23 +55,47 @@
     <div class="shopping-list-display">
         <h3>【食料品】</h3>
         @foreach ($foodItems as $item)
-            <div class="shopping-list-row">
-                <span>{{ $item->item_name }}</span>
-            </div>
+            <form method="POST" action="/shopping-items/{{ $item->id }}/toggle">
+                @csrf
+                <div class="shopping-list-row">
+                    <input class="shopping-list-input"
+                        type="checkbox"
+                        {{ $item->is_checked ? 'checked' : '' }}
+                        onchange="this.form.submit()"
+                    >
+                    <span class="{{ $item->is_checked ? 'checked-item' : '' }}">{{ $item->item_name }}</span>
+                </div>
+            </form>
         @endforeach
 
         <h3>【日用品】</h3>
         @foreach ($dailyItems as $item)
-            <div class="shopping-list-row">
-                <span>{{ $item->item_name }}</span>
-            </div>
+            <form method="POST" action="/shopping-items/{{ $item->id }}/toggle">
+                @csrf
+                <div class="shopping-list-row">
+                    <input class="shopping-list-input"
+                        type="checkbox"
+                        {{ $item->is_checked ? 'checked' : '' }}
+                        onchange="this.form.submit()"
+                    >
+                    <span class="{{ $item->is_checked ? 'checked-item' : '' }}">{{ $item->item_name }}</span>
+                </div>
+            </form>
         @endforeach
 
         <h3>【その他】</h3>
         @foreach ($otherItems as $item)
-            <div class="shopping-list-row">
-                <span>{{ $item->item_name }}</span>
-            </div>
+            <form method="POST" action="/shopping-items/{{ $item->id }}/toggle">
+                @csrf
+                <div class="shopping-list-row">
+                    <input class="shopping-list-input"
+                        type="checkbox"
+                        {{ $item->is_checked ? 'checked' : '' }}
+                        onchange="this.form.submit()"
+                    >
+                    <span class="{{ $item->is_checked ? 'checked-item' : '' }}">{{ $item->item_name }}</span>
+                </div>
+            </form>
         @endforeach
     </div>
 </body>

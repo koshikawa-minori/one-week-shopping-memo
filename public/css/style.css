@@ -21,3 +21,8 @@ button {
 input {
     font-size: 20px;
 }
+
+.checked-item {
+    color: rgb(180, 180, 180);
+    text-decoration: line-through;
+}

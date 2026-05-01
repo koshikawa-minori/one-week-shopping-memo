@@ -103,4 +103,11 @@ class WeeklyMenuController extends Controller
         return redirect()->route('weekly-menus.index');
     }
 
+    public function toggleItem(ShoppingItem $shoppingItem)
+    {
+        $shoppingItem->is_checked = !$shoppingItem->is_checked;
+        $shoppingItem->save();
+
+        return redirect()->route('weekly-menus.index');
+    }
 }
