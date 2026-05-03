@@ -26,3 +26,8 @@ input {
     color: rgb(180, 180, 180);
     text-decoration: line-through;
 }
+
+.error {
+    color: red;
+    font-size: 18px;
+}

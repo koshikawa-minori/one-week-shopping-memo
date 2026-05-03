@@ -72,13 +72,19 @@ class WeeklyMenuController extends Controller
 
         $weeklyMenu = WeeklyMenu::orderBy('created_at', 'desc')->first();
 
-        $itemName = $request->item_name;
-        $category = $request->category;
+        $request->validate([
+            'item_name' => 'required',
+            'category' => 'required',
+        ],
+        [
+            'item_name.required' => '買う物を入力してください',
+            'category.required' => 'カテゴリーを選択してください',
+        ]);
 
         ShoppingItem::create([
             'weekly_menu_id' => $weeklyMenu->id,
-            'item_name' => $itemName,
-            'category' => $category,
+            'item_name' => $request->item_name,
+            'category' => $request->category,
         ]);
 
         return redirect()->route('weekly-menus.index');
@@ -107,6 +113,13 @@ class WeeklyMenuController extends Controller
     {
         $shoppingItem->is_checked = !$shoppingItem->is_checked;
         $shoppingItem->save();
+
+        return redirect()->route('weekly-menus.index');
+    }
+
+    public function destroyItem(ShoppingItem $shoppingItem)
+    {
+        $shoppingItem->delete();
 
         return redirect()->route('weekly-menus.index');
     }
