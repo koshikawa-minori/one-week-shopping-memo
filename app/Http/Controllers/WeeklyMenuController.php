@@ -46,8 +46,14 @@ class WeeklyMenuController extends Controller
 
     public function store(Request $request)
     {
-        $weeklyDate = $request->start_date;
+        $request->validate([
+            'start_date' => 'required'
+        ],
+        [
+            'start_date.required' => '日付を選択してください',
+        ]);
 
+        $weeklyDate = $request->start_date;
         $weeklyMenu = WeeklyMenu::create([
             'start_date' => $weeklyDate
         ]);
@@ -77,8 +83,8 @@ class WeeklyMenuController extends Controller
             'category' => 'required',
         ],
         [
-            'item_name.required' => '買う物を入力してください',
-            'category.required' => 'カテゴリーを選択してください',
+            'item_name.required' => '商品名を入力してください',
+            'category.required' => 'カテゴリを選択してください',
         ]);
 
         ShoppingItem::create([
@@ -88,11 +94,6 @@ class WeeklyMenuController extends Controller
         ]);
 
         return redirect()->route('weekly-menus.index');
-    }
-
-    public function edit($id)
-    {
-
     }
 
     public function updateMenus(Request $request)

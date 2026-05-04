@@ -8,13 +8,15 @@
     <title>一週間Menu</title>
 </head>
 <body>
-    <h2>日付選択</h2>
+    <h2>始まりの日選択</h2>
     <form method="POST" action="/weekly-menus">
         @csrf
         <div class="days-list">
-            <label>週の開始日指定</label>
-            <input type="date" name="start_date" required>
-            <button type="submit">日付入力</button>
+            <input type="date" name="start_date">
+            <button type="submit">日付登録</button>
+            @error('start_date')
+                <div class="error">{{ $message }}</div>
+            @enderror
         </div>
     </form>
 
@@ -32,7 +34,7 @@
                 </div>
             @endforeach
 
-            <button type="submit">決定！</button>
+            <button type="submit">メニュー登録</button>
         </div>
     </form>
 
@@ -41,7 +43,7 @@
         @csrf
         <div class="shopping-list">
             <div class="shopping-items">
-                <select name="category" required>
+                <select name="category">
                     <option value="" disabled selected>選択してください</option>
                         <option class="shopping-category" value="食料品" {{ old('category') == '食料品' ? 'selected' : ''}}>食料品</option>
                         <option class="shopping-category" value="日用品" {{ old('category') == '日用品' ? 'selected' : ''}}>日用品</option>
@@ -50,15 +52,17 @@
                 @error('category')
                     <div class="error">{{ $message }}</div>
                 @enderror
+
                 <input class="shopping-item" type="text" name="item_name">
+                <button type="submit">追加</button>
                 @error('item_name')
                     <div class="error">{{ $message }}</div>
                 @enderror
             </div>
 
-            <button type="submit">追加</button>
         </div>
     </form>
+
     <div class="shopping-list-display">
         <h3>【食料品】</h3>
         @foreach ($foodItems as $item)

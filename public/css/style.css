@@ -7,19 +7,85 @@ body {
     margin: 0 auto;
     padding: 16px;
     font-family: sans-serif;
-    font-size: 20px;
-}
-
-select {
-    font-size: 20px;
-}
-
-button {
-    font-size: 22px;
+    background-color: #FFFFEE;
 }
 
 input {
+    margin: 5px;
+    border-radius: 8px;
+    border: solid 1px rgb(129, 193, 129);
     font-size: 20px;
+}
+
+h2 {
+    font-size: 20px;
+    color: lightcoral;
+}
+
+h3 {
+    font-size: 18px;
+    color: lightcoral;
+}
+
+label {
+    font-size: 18px;
+    font-weight: 400;
+    color: #1E90FF;
+}
+
+select {
+    padding: 4px;
+    outline: none;
+    color: rgb(240, 128, 128);
+    border-radius: 8px;
+    border: solid 1px rgb(8, 176, 167);
+    font-size: 16px;
+    font-weight: 400;
+}
+
+button {
+    border-radius: 8px;
+    border: solid 1px rgb(168, 241, 168);
+    padding: 4px 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(8, 176, 167);
+    background-color: rgb(205, 255, 205);
+}
+
+
+input[type="date"]::-webkit-datetime-edit {
+    outline: none;
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(8, 176, 167);
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    filter:
+        invert(48%)
+        sepia(85%)
+        saturate(500%)
+        hue-rotate(130deg)
+        brightness(90%)
+        contrast(95%);
+}
+
+input[type="text"]{
+    outline: none;
+    color: #1E90FF;
+    font-weight: 500;
+}
+
+.menu-list{
+    display: flex;
+    flex-direction: column;
+}
+
+.menu-date {
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(8, 176, 167);
 }
 
 .checked-item {
@@ -27,7 +93,13 @@ input {
     text-decoration: line-through;
 }
 
+.shopping-list-row {
+    display: flex;
+    align-items: center;
+}
+
 .error {
-    color: red;
+    color: rgb(255, 0, 170);
     font-size: 18px;
+    font-weight: 700;
 }
