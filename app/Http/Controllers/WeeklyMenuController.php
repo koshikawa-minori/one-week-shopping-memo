@@ -12,6 +12,7 @@ class WeeklyMenuController extends Controller
 {
     public function index()
     {
+        Carbon::setLocale('ja');
         $weeklyMenu = WeeklyMenu::orderBy('created_at', 'desc')->first();
 
         if (!$weeklyMenu) {
