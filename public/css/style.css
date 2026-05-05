@@ -44,6 +44,7 @@ select {
 }
 
 button {
+    margin-left: 5px;
     border-radius: 8px;
     border: solid 1px rgb(168, 241, 168);
     padding: 4px 4px;
