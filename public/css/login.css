@@ -1,0 +1,60 @@
+/* 全体中央寄せ */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #FFFFEE;
+}
+
+/* カード */
+.login-container {
+    width: 300px;
+    padding: 20px;
+    background-color: #FFFFEE;
+    border-radius: 8px;
+
+}
+
+/* タイトル */
+.login-container h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    color: lightcoral;
+}
+
+/* 入力欄 */
+.login-container input {
+    margin-top: 5px;
+    outline: none;
+    width: 100%;
+    border-radius: 8px;
+    border: solid 1px rgb(129, 193, 129);
+    font-size: 20px;
+    color: rgb(8, 176, 167);
+}
+
+/* ボタン */
+.login-container button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: solid 1px rgb(168, 241, 168);
+    padding: 4px 4px;
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(8, 176, 167);
+    background-color: rgb(205, 255, 205);
+
+    cursor: pointer;
+}
+
+label {
+    font-size: 16px;
+    font-weight: 700;
+    color: rgb(8, 176, 167);
+}

@@ -78,6 +78,12 @@ input[type="text"]{
     font-weight: 500;
 }
 
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .menu-list{
     display: flex;
     flex-direction: column;

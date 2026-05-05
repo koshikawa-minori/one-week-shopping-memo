@@ -8,7 +8,13 @@
     <title>一週間Menu</title>
 </head>
 <body>
-    <h2>始まりの日選択</h2>
+    <div class="header">
+        <h2>始まりの日選択</h2>
+        <form method="POST" action="/logout">
+            @csrf
+            <button class="logout" type="submit">ログアウト</button>
+        </form>
+    </div>
     <form method="POST" action="/weekly-menus">
         @csrf
         <div class="days-list">
