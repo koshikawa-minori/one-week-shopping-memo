@@ -15,6 +15,7 @@ input {
     border-radius: 8px;
     border: solid 1px rgb(129, 193, 129);
     font-size: 20px;
+    background-color: #ffffff;
 }
 
 h2 {
