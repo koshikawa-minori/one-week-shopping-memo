@@ -44,7 +44,14 @@
         </div>
     </form>
 
-    <h2>買い物メモ</h2>
+    <div class="header">
+        <h2>買い物メモ</h2>
+        <form method="POST" action="{{ route('shopping-items.destroy-all') }}">
+            @csrf
+            @method('DELETE')
+            <button type="submit">メモをすべて削除</button>
+        </form>
+    </div>
     <form method="POST" action="{{ route('shopping-items.store') }}">
         @csrf
         <div class="shopping-list">

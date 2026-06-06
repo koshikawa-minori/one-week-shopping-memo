@@ -116,6 +116,13 @@ class WeeklyMenuController extends Controller
         return redirect()->route('weekly-menus.index');
     }
 
+    public function destroyAllItems()
+    {
+        ShoppingItem::query()->delete();
+
+        return redirect()->route('weekly-menus.index');
+    }
+
     public function destroyItem(ShoppingItem $shoppingItem)
     {
         $shoppingItem->delete();

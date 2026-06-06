@@ -43,6 +43,10 @@ Route::middleware(SimpleAuth::class)->group(function () {
     // チェックボックス
     Route::post('/shopping-items/{shoppingItem}/toggle', [WeeklyMenuController::class, 'toggleItem'])->name('shopping-items.toggle');
 
+    // 買い物メモ全削除
+    Route::delete('/shopping-items', [WeeklyMenuController::class, 'destroyAllItems'])->name('shopping-items.destroy-all');
+
     // 対象の買い物メモ削除
     Route::delete('/shopping-items/{shoppingItem}', [WeeklyMenuController::class, 'destroyItem'])->name('shopping-items.destroy');
+
 });
