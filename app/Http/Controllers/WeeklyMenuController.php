@@ -29,9 +29,7 @@ class WeeklyMenuController extends Controller
             ->orderBy('date')
             ->get();
 
-        $shoppingItems = ShoppingItem::where('weekly_menu_id', $weeklyMenu->id)
-        ->orderBy('item_name')
-            ->get();
+        $shoppingItems = ShoppingItem::orderBy('item_name')->get();
 
         $foodItems = $shoppingItems->where('category', '食料品');
         $dailyItems  = $shoppingItems->where('category', '日用品');
@@ -89,7 +87,6 @@ class WeeklyMenuController extends Controller
         ]);
 
         ShoppingItem::create([
-            'weekly_menu_id' => $weeklyMenu->id,
             'item_name' => $request->item_name,
             'category' => $request->category,
         ]);
