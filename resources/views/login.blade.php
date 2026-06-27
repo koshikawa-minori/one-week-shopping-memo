@@ -14,7 +14,7 @@
         <form method="POST" action="/login">
             @csrf
             <label>パスワード</label>
-            <input type="password" name="password" required>
+            <input type="password" name="password" inputmode="numeric" pattern="[0-9]*" required>
             <button type="submit">ログイン</button>
         </form>
     </div>
